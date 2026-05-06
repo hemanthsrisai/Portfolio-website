@@ -4,7 +4,7 @@ import srmLogo from "@/assets/srm_logo.png";
 
 export function EducationBanners() {
   return (
-    <section id="education" className="relative py-16 px-6 bg-background">
+    <section id="education" className="relative py-16 px-6 bg-transparent">
       <div className="max-w-[1400px] mx-auto">
         <SectionHeader eyebrow="01 · Education" title="Foundations built at world-class institutions." watermark="LEARN" />
         

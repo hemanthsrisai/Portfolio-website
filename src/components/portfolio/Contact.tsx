@@ -53,7 +53,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-16 md:py-24 px-6 bg-surface/40 overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 px-6 bg-transparent overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] rounded-full bg-brand-blue/5 blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-brand-green/5 blur-3xl" />

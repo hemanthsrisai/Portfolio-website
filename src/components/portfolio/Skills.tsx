@@ -125,7 +125,7 @@ function SkillIcon({ name }: { name: string }) {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-16 md:py-24 px-6 bg-surface/40 overflow-hidden">
+    <section id="skills" className="relative py-16 md:py-24 px-6 bg-transparent overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
         <SectionHeader
           eyebrow="02 · Capabilities"

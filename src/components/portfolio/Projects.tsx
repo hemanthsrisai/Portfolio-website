@@ -3,7 +3,7 @@ import { SectionHeader } from "./SectionHeader";
 
 export function Projects() {
   return (
-    <section id="projects" className="relative py-16 md:py-24 px-6 bg-surface/40">
+    <section id="projects" className="relative py-16 md:py-24 px-6 bg-transparent">
       <div className="max-w-[1400px] mx-auto">
         <SectionHeader
           eyebrow="04 · Selected Work"
