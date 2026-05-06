@@ -4,9 +4,7 @@ import { SectionHeader } from "./SectionHeader";
 
 import { createServerFn } from "@tanstack/react-start";
 
-const sendEmailFn = createServerFn({ method: "POST" })
-  .validator((data: any) => data as { name: string; email: string; company: string; message: string })
-  .handler(async ({ data }) => {
+const sendEmailFn = createServerFn("POST", async (data: { name: string; email: string; company: string; message: string }) => {
     // Dynamically import resend so it only loads on the server
     const { Resend } = await import("resend");
     // Ensure you have RESEND_API_KEY in your environment variables
@@ -43,7 +41,7 @@ export function Contact() {
     };
 
     try {
-      await sendEmailFn({ data });
+      await sendEmailFn(data);
       setSent(true);
       setTimeout(() => setSent(false), 4000);
       (e.target as HTMLFormElement).reset();
