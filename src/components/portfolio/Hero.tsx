@@ -58,7 +58,7 @@ export function Hero() {
 
             {/* Title with bold animated style */}
             <div
-              className={`mt-10 transition-all duration-1000 delay-[1s] ${
+              className={`mt-6 transition-all duration-700 delay-[0.2s] ${
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
@@ -68,7 +68,7 @@ export function Hero() {
             </div>
 
             {/* Tagline replaced with dynamic bullet points in stylish glass boxes */}
-            <div className="mt-12 space-y-4 max-w-2xl">
+            <div className="mt-8 space-y-4 max-w-2xl">
               {[
                 { icon: "💡", text: "Bridging business strategy with technical execution." },
                 { icon: "☁️", text: "Driving cloud migration and digital transformation." },
@@ -76,10 +76,10 @@ export function Hero() {
               ].map((bullet, i) => (
                 <div 
                   key={i}
-                  className={`flex items-center gap-5 transition-all duration-1000 glass px-6 py-4 rounded-2xl shadow-sm hover:shadow-md hover:border-brand-blue/40 ${
+                  className={`flex items-center gap-5 transition-all duration-700 glass px-6 py-4 rounded-2xl shadow-sm hover:shadow-md hover:border-brand-blue/40 ${
                     loaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
                   }`}
-                  style={{ transitionDelay: `${1.2 + i * 0.2}s` }}
+                  style={{ transitionDelay: `${0.4 + i * 0.15}s` }}
                 >
                   <div className="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center flex-shrink-0 text-xl">
                     {bullet.icon}
@@ -90,7 +90,7 @@ export function Hero() {
             </div>
 
             <div
-              className={`mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4 transition-all duration-1000 delay-[1.8s] ${
+              className={`mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 transition-all duration-700 delay-[0.8s] ${
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
@@ -114,7 +114,7 @@ export function Hero() {
           {/* Avatar */}
           <div className="lg:col-span-2 flex justify-center lg:justify-end">
             <div
-              className={`relative group transition-all duration-1000 delay-500 ${
+              className={`relative group transition-all duration-700 delay-[0.2s] ${
                 loaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
@@ -143,9 +143,9 @@ export function Hero() {
                 <span className="text-xl">📊</span>
                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground whitespace-nowrap">Analyst</span>
               </div>
-              <div className="absolute top-[15%] -right-2 md:-right-4 glass rounded-2xl p-3 shadow-elevated animate-float flex flex-col items-center gap-1 z-20" style={{ animationDelay: '1.5s' }}>
+              <div className="absolute top-[20%] -right-4 md:-right-8 glass rounded-2xl p-3 shadow-elevated animate-float flex flex-col items-center gap-1 z-20" style={{ animationDelay: '1.5s' }}>
                 <span className="text-xl">🎯</span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground whitespace-nowrap">Product Management</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground text-center leading-tight">Product<br/>Management</span>
               </div>
               <div className="absolute bottom-[15%] -left-4 md:-left-10 glass rounded-2xl p-3 shadow-elevated animate-float-gentle flex flex-col items-center gap-1" style={{ animationDelay: '2.5s' }}>
                 <span className="text-xl">🎓</span>
