@@ -2,27 +2,22 @@ import { useState } from "react";
 import { resume } from "@/data/resume";
 import { SectionHeader } from "./SectionHeader";
 
-import { createServerFn } from "@tanstack/react-start";
-
-const sendEmailFn = createServerFn("POST", async (data: { name: string; email: string; company: string; message: string }) => {
-    // Dynamically import resend so it only loads on the server
-    const { Resend } = await import("resend");
-    // Ensure you have RESEND_API_KEY in your environment variables
-    const resend = new Resend(process.env.RESEND_API_KEY);
+  // Use Vercel API route instead of createServerFn
+  const sendEmail = async (data: { name: string; email: string; company: string; message: string }) => {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
     
-    try {
-      await resend.emails.send({
-        from: "Acme <onboarding@resend.dev>", // Replace with your verified domain
-        to: [resume.email],
-        subject: `New Portfolio Contact: ${data.name}`,
-        text: `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\n\nMessage:\n${data.message}`,
-      });
-      return { success: true };
-    } catch (error) {
-      console.error(error);
-      throw new Error("Failed to send email");
+    if (!response.ok) {
+      throw new Error('Failed to send email');
     }
-  });
+    
+    return response.json();
+  };
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -41,7 +36,7 @@ export function Contact() {
     };
 
     try {
-      await sendEmailFn(data);
+      await sendEmail(data);
       setSent(true);
       setTimeout(() => setSent(false), 4000);
       (e.target as HTMLFormElement).reset();
