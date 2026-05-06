@@ -29,9 +29,7 @@ export function Hero() {
       id="top"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
     >
-      {/* Animated mesh gradient */}
-      <div className="absolute inset-0 bg-mesh animate-mesh" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_80%)]" />
+      {/* Global background now handles this */}
 
       {/* Subtle grid overlay */}
       <div

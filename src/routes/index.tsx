@@ -37,7 +37,7 @@ function Index() {
   const { isDark, toggle } = useDarkMode();
 
   return (
-    <main className="bg-background text-foreground relative">
+    <main className="bg-transparent text-foreground relative">
       <ScrollProgress progress={scrollProgress} />
       <BackgroundBlobs />
       <Nav name={resume.name} isDark={isDark} toggleDark={toggle} />

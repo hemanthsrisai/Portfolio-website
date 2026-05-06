@@ -136,7 +136,7 @@
 
   body {
     background-color: var(--color-background);
-    background-image: var(--gradient-mesh);
+    background-image: linear-gradient(135deg, color-mix(in oklab, var(--brand-blue) 25%, var(--background)), color-mix(in oklab, var(--brand-green) 25%, var(--background)));
     background-attachment: fixed;
     background-size: cover;
     color: var(--color-foreground);
