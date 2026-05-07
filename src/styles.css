@@ -53,6 +53,7 @@
   --gradient-mesh: radial-gradient(at 20% 30%, color-mix(in oklab, var(--brand-blue) 35%, transparent) 0px, transparent 50%),
                    radial-gradient(at 80% 20%, color-mix(in oklab, var(--brand-green) 30%, transparent) 0px, transparent 50%),
                    radial-gradient(at 60% 80%, color-mix(in oklab, var(--brand-blue) 25%, transparent) 0px, transparent 50%);
+  --gradient-page: linear-gradient(135deg, color-mix(in oklab, var(--brand-blue) 8%, var(--background)) 0%, color-mix(in oklab, var(--brand-green) 8%, var(--background)) 100%);
 }
 
 /* ─── Light theme (default) ─── */
@@ -135,10 +136,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    background-image: linear-gradient(135deg, color-mix(in oklab, var(--brand-blue) 25%, var(--background)), color-mix(in oklab, var(--brand-green) 25%, var(--background)));
+    background: var(--gradient-page);
     background-attachment: fixed;
-    background-size: cover;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
@@ -223,10 +222,9 @@
   /* ─── Reveal-on-scroll ─── */
   .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.is-visible {
     opacity: 1;
@@ -236,10 +234,9 @@
   /* slide-up variant */
   .reveal-up {
     opacity: 0;
-    transform: translateY(48px);
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transform: translateY(32px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal-up.is-visible {
     opacity: 1;
@@ -249,10 +246,9 @@
   /* slide-left variant */
   .reveal-left {
     opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transform: translateX(-24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal-left.is-visible {
     opacity: 1;
@@ -262,10 +258,9 @@
   /* slide-right variant */
   .reveal-right {
     opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transform: translateX(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal-right.is-visible {
     opacity: 1;
@@ -348,10 +343,10 @@
 
   /* ─── Hero animations ─── */
   @keyframes mesh-pulse {
-    0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.9; }
-    50% { transform: scale(1.12) translate(2%, -2%); opacity: 1; }
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; }
   }
-  .animate-mesh { animation: mesh-pulse 16s ease-in-out infinite; }
+  .animate-mesh { animation: mesh-pulse 20s ease-in-out infinite; }
 
   @keyframes float-slow {
     0%, 100% { transform: translateY(0); }
@@ -372,8 +367,7 @@
     to { transform: translate3d(calc(-50% - 0.625rem), 0, 0); }
   }
   .animate-marquee {
-    animation: marquee 25s linear infinite;
-    will-change: transform;
+    animation: marquee 30s linear infinite;
   }
   .animate-marquee:hover {
     animation-play-state: paused;
@@ -447,9 +441,8 @@
   /* ─── Experience timeline ─── */
   .xp-item {
     opacity: 0;
-    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .xp-item.from-left { transform: translate3d(-60px, 20px, 0) scale(0.97); }
   .xp-item.from-right { transform: translate3d(60px, 20px, 0) scale(0.97); }
@@ -510,11 +503,11 @@
   /* ─── Background particles / blobs ─── */
   @keyframes blob-drift {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -50px) scale(1.1); }
-    50% { transform: translate(-20px, 30px) scale(0.95); }
-    75% { transform: translate(40px, 20px) scale(1.05); }
+    25% { transform: translate(15px, -25px) scale(1.05); }
+    50% { transform: translate(-10px, 15px) scale(0.97); }
+    75% { transform: translate(20px, 10px) scale(1.02); }
   }
-  .animate-blob { animation: blob-drift 20s ease-in-out infinite; }
+  .animate-blob { animation: blob-drift 25s ease-in-out infinite; }
 
   /* ─── Dark mode toggle ─── */
   .theme-toggle {

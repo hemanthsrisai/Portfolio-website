@@ -27,9 +27,11 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Global background now handles this */}
+      {/* Animated mesh gradient */}
+      <div className="absolute inset-0 bg-mesh animate-mesh" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_80%)]" />
 
       {/* Subtle grid overlay */}
       <div
@@ -143,7 +145,7 @@ export function Hero() {
               </div>
               <div className="absolute top-[20%] -right-4 md:-right-8 glass rounded-2xl p-3 shadow-elevated animate-float flex flex-col items-center gap-1 z-20" style={{ animationDelay: '1.5s' }}>
                 <span className="text-xl">🎯</span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground text-center leading-tight">Product<br/>Management</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted-foreground text-center leading-tight">Product<br/>Mgmt</span>
               </div>
               <div className="absolute bottom-[15%] -left-4 md:-left-10 glass rounded-2xl p-3 shadow-elevated animate-float-gentle flex flex-col items-center gap-1" style={{ animationDelay: '2.5s' }}>
                 <span className="text-xl">🎓</span>

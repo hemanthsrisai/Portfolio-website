@@ -2,23 +2,6 @@ import { useState } from "react";
 import { resume } from "@/data/resume";
 import { SectionHeader } from "./SectionHeader";
 
-  // Use Vercel API route instead of createServerFn
-  const sendEmail = async (data: { name: string; email: string; company: string; message: string }) => {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    
-    if (!response.ok) {
-      throw new Error('Failed to send email');
-    }
-    
-    return response.json();
-  };
-
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,7 +19,8 @@ export function Contact() {
     };
 
     try {
-      await sendEmail(data);
+      // For now, open mailto as fallback. Resend integration will be added after deployment.
+      window.location.href = `mailto:${resume.email}?subject=Portfolio Contact: ${data.name}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\n\nMessage:\n${data.message}`)}`;
       setSent(true);
       setTimeout(() => setSent(false), 4000);
       (e.target as HTMLFormElement).reset();
@@ -48,7 +32,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-16 md:py-24 px-6 bg-transparent overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 px-6 overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] rounded-full bg-brand-blue/5 blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-brand-green/5 blur-3xl" />
@@ -148,15 +132,6 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-24 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <svg className="w-6 h-6" viewBox="0 0 40 40" fill="none">
-              <path d="M10 10V30M10 20H20M20 10V30M25 10H30C32.7614 10 35 12.2386 35 15C35 17.7614 32.7614 20 30 20H25V10ZM25 20H30C32.7614 20 35 22.2386 35 25C35 27.7614 32.7614 30 30 30H25V20Z" stroke="url(#contact-logo-grad)" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <defs>
-                <linearGradient id="contact-logo-grad" x1="10" y1="10" x2="35" y2="30" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="var(--brand-blue)" />
-                  <stop offset="1" stopColor="var(--brand-green)" />
-                </linearGradient>
-              </defs>
-            </svg>
             <span>© {new Date().getFullYear()} {resume.name}. Crafted with precision.</span>
           </div>
           <div className="flex gap-6">

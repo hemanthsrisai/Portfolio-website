@@ -125,7 +125,7 @@ function SkillIcon({ name }: { name: string }) {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-16 md:py-24 px-6 bg-transparent overflow-hidden">
+    <section id="skills" className="relative py-16 md:py-24 px-6 overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
         <SectionHeader
           eyebrow="02 · Capabilities"
@@ -136,8 +136,8 @@ export function Skills() {
 
       {/* Scrolling Icons Marquee */}
       <div className="mt-16 relative overflow-hidden">
-        <div className="absolute top-0 bottom-0 left-0 w-40 bg-gradient-to-r from-[color-mix(in_oklab,var(--surface)_80%,transparent)] to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-40 bg-gradient-to-l from-[color-mix(in_oklab,var(--surface)_80%,transparent)] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-40 bg-gradient-to-r from-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-40 bg-gradient-to-l from-background/80 to-transparent z-10 pointer-events-none" />
 
         <div className="flex gap-6 animate-marquee will-change-transform">
           {[...resume.skillTags, ...resume.skillTags].map((skill, i) => (
