@@ -19,8 +19,18 @@ export function Contact() {
     };
 
     try {
-      // For now, open mailto as fallback. Resend integration will be added after deployment.
-      window.location.href = `mailto:${resume.email}?subject=Portfolio Contact: ${data.name}&body=${encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\n\nMessage:\n${data.message}`)}`;
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+
       setSent(true);
       setTimeout(() => setSent(false), 4000);
       (e.target as HTMLFormElement).reset();
@@ -78,7 +88,10 @@ export function Contact() {
             {/* Download Resume CTA */}
             <div className="mt-10">
               <a
-                href="#"
+                href="/Hemanthsrisai_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Hemanthsrisai_Resume.pdf"
                 className="inline-flex items-center gap-2 btn-shimmer bg-gradient-brand text-white px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform shadow-lg"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
