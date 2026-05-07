@@ -19,12 +19,19 @@ export function Contact() {
     };
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: "14d07c35-ad82-4771-accb-2f9ed41511b8",
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          message: data.message
+        }),
       });
 
       if (!response.ok) {
